@@ -25,6 +25,9 @@ public class CheckoutSolution {
                     count+= (repeated / 3) * 130;
                     count+= (repeated % 3) * 50;
                     break;
+                case 'E':
+                    count+= repeated * 40;
+                    break;
                 case 'B':
                     count+= (repeated / 2) * 45;
                     count+= (repeated % 2) * 30;
@@ -42,5 +45,6 @@ public class CheckoutSolution {
         return count;
     }
 }
+
 
 
