@@ -17,6 +17,11 @@ public class CheckoutSolution {
             skuRepeated.put(sku, skuRepeated.getOrDefault(sku, 0) + 1);
         }
 
+        if(skuRepeated.containsKey('E') && skuRepeated.containsKey('B')) {
+            int countFree = skuRepeated.get('E') / 2;
+            int countB = skuRepeated.get('B');
+            skuRepeated.put('B', countB - countFree);
+        }
         for(Map.Entry<Character, Integer> value : skuRepeated.entrySet()){
             char sku = value.getKey();
             int repeated = value.getValue();
@@ -24,9 +29,6 @@ public class CheckoutSolution {
                 case 'A':
                     count+= (repeated / 3) * 130;
                     count+= (repeated % 3) * 50;
-                    break;
-                case 'E':
-                    count+= repeated * 40;
                     break;
                 case 'B':
                     count+= (repeated / 2) * 45;
@@ -38,6 +40,9 @@ public class CheckoutSolution {
                 case 'D':
                     count+= repeated * 15;
                     break;
+                case 'E':
+                    count+= repeated * 40;
+                    break;
                 default:
                     return -1;
             }
@@ -45,3 +50,4 @@ public class CheckoutSolution {
         return count;
     }
 }
+
