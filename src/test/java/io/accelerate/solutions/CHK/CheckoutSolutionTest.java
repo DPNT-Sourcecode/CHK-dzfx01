@@ -16,6 +16,8 @@ public class CheckoutSolutionTest {
         assertThat(solution.checkout("BCDAAB"), equalTo(180));
         assertThat(solution.checkout("ADAAB"), equalTo(175));
         assertThat(solution.checkout("ADAABF"), equalTo(-1));
+        assertThat(solution.checkout(""), equalTo(0));
     }
 }
+
 

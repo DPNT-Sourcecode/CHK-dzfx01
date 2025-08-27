@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class CheckoutSolution {
     public Integer checkout(String skus) {
-        if(skus.length()<1){
-            return -1;
+        if(skus.length()==0){
+            return 0;
         }
         Integer count = 0;
         Map<Character, Integer> skuRepeated = new HashMap<>();
@@ -42,4 +42,5 @@ public class CheckoutSolution {
         return count;
     }
 }
+
 
