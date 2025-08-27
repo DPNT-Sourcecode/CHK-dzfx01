@@ -9,19 +9,19 @@ public class CheckoutSolution {
         }
         Integer count = 0;
         Integer[] skuRepeated = new Integer[4];
-        String [] skusArr = skus.split(",");
-        for(String sku : skusArr) {
-            switch (sku.trim()) {
-                case "A":
+        char [] skusArr = skus.toCharArray();
+        for(char sku : skusArr) {
+            switch (sku) {
+                case 'A':
                     skuRepeated[0]++;
                     break;
-                case "B":
+                case 'B':
                     skuRepeated[1]++;
                     break;
-                case "C":
+                case 'C':
                     skuRepeated[2]++;
                     break;
-                case "D":
+                case 'D':
                     skuRepeated[3]++;
                     break;
                 default:
@@ -29,10 +29,11 @@ public class CheckoutSolution {
             }
         }
 
+        for(int i=0;i<skuRepeated.length;i++){
+            
+        }
+
 
         return count;
     }
 }
-
-
-
