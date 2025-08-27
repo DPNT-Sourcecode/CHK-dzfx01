@@ -27,13 +27,10 @@ public class CheckoutSolution {
             int repeated = value.getValue();
             switch (sku){
                 case 'A':
-                    if(5 % rep >= 0){
-                        count += (repeated / 5) * 200;
-                        count += (repeated % 5) * 50;
-                    }else {
-                        count += (repeated / 3) * 130;
-                        count += (repeated % 3) * 50;
-                    }
+                    count += (repeated / 5) * 200;
+                    count += (repeated % 5) * 50;
+                    count += (repeated / 3) * 130;
+                    count += (repeated % 3) * 50;
                     break;
                 case 'B':
                     count+= (repeated / 2) * 45;
@@ -55,6 +52,7 @@ public class CheckoutSolution {
         return count;
     }
 }
+
 
 
 
