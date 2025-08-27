@@ -27,7 +27,7 @@ public class CheckoutSolution {
             int repeated = value.getValue();
             switch (sku){
                 case 'A':
-                    if(repeated % 5 >= 0){
+                    if(5 % rep >= 0){
                         count += (repeated / 5) * 200;
                         count += (repeated % 5) * 50;
                     }else {
@@ -55,5 +55,6 @@ public class CheckoutSolution {
         return count;
     }
 }
+
 
 
