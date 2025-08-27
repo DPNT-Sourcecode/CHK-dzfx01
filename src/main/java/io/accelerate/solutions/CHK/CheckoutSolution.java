@@ -14,29 +14,25 @@ public class CheckoutSolution {
             switch (sku.trim()) {
                 case "A":
                     skuRepeated[0]++;
-                    count += 50;
                     break;
                 case "B":
                     skuRepeated[1]++;
-                    count += 30;
                     break;
                 case "C":
                     skuRepeated[2]++;
-                    count += 20;
                     break;
                 case "D":
                     skuRepeated[3]++;
-                    count += 15;
                     break;
                 default:
                     return -1;
             }
         }
 
-        if(skuRepeated[0]){}
 
         return count;
     }
 }
+
 
 
