@@ -19,5 +19,3 @@ public class CheckoutSolutionTest {
         assertThat(solution.checkout(""), equalTo(0));
     }
 }
-
-
