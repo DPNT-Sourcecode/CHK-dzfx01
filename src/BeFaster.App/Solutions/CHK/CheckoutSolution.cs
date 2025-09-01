@@ -26,6 +26,7 @@ namespace BeFaster.App.Solutions.CHK
                 var counts = new Dictionary<char, int>();
                 foreach (var key in skus.ToCharArray())
                 {
+                    if (!info.TryGetValue(key, out _)) return -1;
                     var item = counts.GetValueOrDefault(key);
                     if (item == 0)
                     {
@@ -36,7 +37,15 @@ namespace BeFaster.App.Solutions.CHK
                         counts[key]++;
                     }
                 }
-                if(counts.)
+                if (counts.TryGetValue('E', out var eValue))
+                {
+                    var result = eValue / 2;
+
+                    if (counts.TryGetValue('B', out var bValue))
+                    {
+                        counts['B'] = bValue - result;
+                    }
+                }
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -64,3 +73,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
