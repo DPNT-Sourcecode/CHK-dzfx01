@@ -56,8 +56,10 @@ namespace BeFaster.App.Solutions.CHK
                 { ('N', 3), 'M' },
                 { ('R', 3), 'Q' },
             };
-            var 
-
+            var groupOffers = new Dictionary<char, (char, int)[]>
+            {
+                { 'S', [  ] }
+            };
 
             if (skus != null)
             {
@@ -117,6 +119,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
