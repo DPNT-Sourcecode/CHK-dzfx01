@@ -47,7 +47,7 @@ namespace BeFaster.App.Solutions.CHK
                 { 'K', [ new int[] { 2, 150 } ] },
                 { 'P', [ new int[] { 5, 200 } ] },
                 { 'Q', [ new int[] { 3, 80 } ] },
-                { 'U', [ new int[] { 3, uValue * 2 } ] },
+                { 'U', [ new int[] { 4, uValue * 2 } ] },
                 { 'V', [ new int[] { 3, 130 }, new int[] { 2, 90 } ] }
             };
 
@@ -121,6 +121,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
