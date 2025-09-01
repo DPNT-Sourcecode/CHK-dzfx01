@@ -14,9 +14,15 @@ namespace BeFaster.App.Solutions.CHK
                 { 'D', 15 },
                 { 'E', 40 }
             };
+
+            var offers = new Dictionary<char, List<int[]>> {
+
+                { 'A', new List<int>{ new int[] { 3, 120 }, new int[] { 5, 200 } } },
+                { 'B', 30 },
+            };
             
-            var offers = new Dictionary<char, 
         }
     }
 }
+
 
