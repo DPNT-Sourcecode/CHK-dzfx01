@@ -16,11 +16,12 @@ namespace BeFaster.App.Solutions.CHK
                 { 'F', 10 }
             };
 
+            info.TryGetValue('F', out var fValue);
             var offers = new Dictionary<char, List<int[]>> {
 
                 { 'A', [ new int[] { 5, 200 }, new int[] { 3, 130 } ] },
                 { 'B', [ new int[] { 2, 45 } ] },
-                { 'F', [ new int[] { 3, info.GetValueOrDefault } ] },
+                { 'F', [ new int[] { 3, fValue * 2 } ] },
             };
 
             if (skus != null)
@@ -75,6 +76,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
-
-
