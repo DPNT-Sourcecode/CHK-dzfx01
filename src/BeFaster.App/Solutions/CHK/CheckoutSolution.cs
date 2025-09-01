@@ -91,7 +91,7 @@ namespace BeFaster.App.Solutions.CHK
 
                     if (counts.TryGetValue('Q', out var qValue))
                     {
-                        counts['Q'] = rValue - result;
+                        counts['Q'] = qValue - result;
                     }
                 }
                 var total = 0;
@@ -121,6 +121,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 

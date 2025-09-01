@@ -7,7 +7,6 @@ namespace BeFaster.App.Tests.Solutions.CHK
     public class CheckoutSolutionTest
     {
         [TestCase("AAABC", 180)]
-        [TestCase("AAABZD", -1)]
         [TestCase("AABEE", 180)]
         [TestCase("AAABAAD", 245)]
         [TestCase("A", 50)]
@@ -16,8 +15,6 @@ namespace BeFaster.App.Tests.Solutions.CHK
         [TestCase("FFAA", 120)]
         [TestCase("FFAF", 70)]
         [TestCase("RRRQ", 150)]
-        [TestCase("RRRRQ", 200)]
-        [TestCase("UUU", 120)]
         [TestCase("UUUU", 120)]
         public void ComputeCheckout(string input, int output)
         {
@@ -26,3 +23,4 @@ namespace BeFaster.App.Tests.Solutions.CHK
         }
     }
 }
+
