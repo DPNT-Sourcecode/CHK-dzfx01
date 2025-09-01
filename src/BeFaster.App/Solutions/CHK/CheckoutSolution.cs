@@ -95,7 +95,17 @@ namespace BeFaster.App.Solutions.CHK
                         }
                     }
                 }
-
+                foreach (var groupOffer in groupOffers)
+                {
+                    var (key, keys) = groupOffer.Key;
+                    if (counts.TryGetValue(key, out var firstValue))
+                    {
+                        foreach (var subKey in keys)
+                        {
+                            
+                        }
+                    }
+                }
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -123,3 +133,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
