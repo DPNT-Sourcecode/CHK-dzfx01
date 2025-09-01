@@ -8,7 +8,7 @@ namespace BeFaster.App.Tests.Solutions.CHK
     {
         [TestCase("AAABC", 180)]
         [TestCase("AAABFD", -1)]
-        [TestCase("AAABEE", 210)]
+        [TestCase("AABEE", 180)]
         [TestCase("AAABAAD", 245)]
         [TestCase("A", 50)]
         [TestCase("ACBB", 130)]
@@ -16,7 +16,8 @@ namespace BeFaster.App.Tests.Solutions.CHK
         public void ComputeCheckout(string input, int output)
         {
             var result = new CheckoutSolution().Checkout(input);
-            Assert.That(output, Is.EqualTo(result));
+            Assert.That(result, Is.EqualTo(output));
         }
     }
 }
+
