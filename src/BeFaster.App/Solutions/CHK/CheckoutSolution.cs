@@ -76,7 +76,24 @@ namespace BeFaster.App.Solutions.CHK
                         counts['B'] = bValue - result;
                     }
                 }
-                
+                if (counts.TryGetValue('N', out var nValue))
+                {
+                    var result = nValue / 3;
+
+                    if (counts.TryGetValue('M', out var mValue))
+                    {
+                        counts['M'] = mValue - result;
+                    }
+                }
+                if (counts.TryGetValue('R', out var rValue))
+                {
+                    var result = rValue / 3;
+
+                    if (counts.TryGetValue('Q', out var qValue))
+                    {
+                        counts['Q'] = rValue - result;
+                    }
+                }
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -104,5 +121,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
