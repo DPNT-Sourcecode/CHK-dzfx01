@@ -1,4 +1,5 @@
-﻿using BeFaster.Runner.Exceptions;
+﻿using System.Diagnostics.CodeAnalysis;
+using BeFaster.Runner.Exceptions;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -49,6 +50,11 @@ namespace BeFaster.App.Solutions.CHK
                 { 'Q', [ new int[] { 3, 80 } ] },
                 { 'U', [ new int[] { 4, uValue * 3 } ] },
                 { 'V', [ new int[] { 3, 130 }, new int[] { 2, 90 } ] }
+            };
+            var combinedOffers = new Dictionary<char, Dictionary<char, int>>
+            {
+
+                { 'E', { '' } },
             };
 
             if (skus != null)
@@ -121,3 +127,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
