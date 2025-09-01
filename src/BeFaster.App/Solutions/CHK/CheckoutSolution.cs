@@ -51,9 +51,11 @@ namespace BeFaster.App.Solutions.CHK
                 { 'U', [ new int[] { 4, uValue * 3 } ] },
                 { 'V', [ new int[] { 3, 130 }, new int[] { 2, 90 } ] }
             };
-            var combinedOffers = new Dictionary<(char, int), char, int)>
+            var combinedOffers = new Dictionary<(char, int), char>
             {
-                { ('E', 2), ('B', 1) }
+                { ('E', 2), 'B' },
+                { ('N', 3), 'M' },
+                { ('R', 3), 'Q' },
             };
             
 
@@ -73,33 +75,19 @@ namespace BeFaster.App.Solutions.CHK
                         counts[key]++;
                     }
                 }
-                if (counts.TryGetValue('E', out var eValue))
+                foreach (var key in combinedOffers)
                 {
-                    var result = eValue / 2;
-
-                    if (counts.TryGetValue('B', out var bValue))
+                    if (counts.TryGetValue('E', out var eValue))
                     {
-                        counts['B'] = bValue - result;
+                        var result = eValue / 2;
+
+                        if (counts.TryGetValue('B', out var bValue))
+                        {
+                            counts['B'] = bValue - result;
+                        }
                     }
                 }
-                if (counts.TryGetValue('N', out var nValue))
-                {
-                    var result = nValue / 3;
-
-                    if (counts.TryGetValue('M', out var mValue))
-                    {
-                        counts['M'] = mValue - result;
-                    }
-                }
-                if (counts.TryGetValue('R', out var rValue))
-                {
-                    var result = rValue / 3;
-
-                    if (counts.TryGetValue('Q', out var qValue))
-                    {
-                        counts['Q'] = qValue - result;
-                    }
-                }
+                
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -127,6 +115,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
