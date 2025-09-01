@@ -53,9 +53,13 @@ namespace BeFaster.App.Solutions.CHK
             };
             var combinedOffers = new Dictionary<char, Dictionary<char, int>>
             {
-
-                { 'E', { '' } },
+                ['E'] = new Dictionary<char, int>
+                {
+                    ['B'] = 2
+                }
+                { 'E', new Dictionary<char, int> { 'B', 2 } }
             };
+            
 
             if (skus != null)
             {
@@ -127,4 +131,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
