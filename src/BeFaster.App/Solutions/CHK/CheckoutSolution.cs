@@ -58,7 +58,11 @@ namespace BeFaster.App.Solutions.CHK
             };
             var groupOffers = new Dictionary<(char, char[]), List<int[]>>
             {
-                { ('S', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] }
+                { ('S', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
+                { ('T', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
+                { ('X', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
+                { ('Y', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
+                { ('Z', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] }
             };
 
             if (skus != null)
@@ -119,6 +123,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
