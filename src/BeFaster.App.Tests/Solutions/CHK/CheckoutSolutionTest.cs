@@ -13,10 +13,10 @@ namespace BeFaster.App.Tests.Solutions.CHK
         [TestCase("A", 50)]
         [TestCase("ACBB", 130)]
         [TestCase("", 0)]
-        public void ComputeSum(string input, int output)
+        public void ComputeCheckout(string input, int output)
         {
             var result = new CheckoutSolution().Checkout(input);
-            Assert.Equals(output, result);
+            Assert.That(output, Is.EqualTo(result));
         }
     }
 }
