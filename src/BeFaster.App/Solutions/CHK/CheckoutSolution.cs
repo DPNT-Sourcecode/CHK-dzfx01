@@ -57,13 +57,13 @@ namespace BeFaster.App.Solutions.CHK
                 { ('N', 3), 'M' },
                 { ('R', 3), 'Q' },
             };
-            var groupOffers = new Dictionary<(char, char[]), List<int[]>>
+            var groupOffers = new Dictionary<(char, char[]), (int, int)>
             {
-                { ('S', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
-                { ('T', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
-                { ('X', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
-                { ('Y', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] },
-                { ('Z', ['S', 'T', 'X', 'Y', 'Z']), [ new int[] { 3, 45 } ] }
+                { ('S', ['S', 'T', 'X', 'Y', 'Z']), (3, 45) },
+                { ('T', ['S', 'T', 'X', 'Y', 'Z']), (3, 45) },
+                { ('X', ['S', 'T', 'X', 'Y', 'Z']), (3, 45) },
+                { ('Y', ['S', 'T', 'X', 'Y', 'Z']), (3, 45) },
+                { ('Z', ['S', 'T', 'X', 'Y', 'Z']), (3, 45) }
             };
 
             if (skus != null)
@@ -99,16 +99,14 @@ namespace BeFaster.App.Solutions.CHK
                 foreach (var groupOffer in groupOffers)
                 {
                     var (key, keys) = groupOffer.Key;
+                    var (qty, price) = groupOffer.Value;
                     if (counts.TryGetValue(key, out var firstValue))
                     {
                         foreach (var subKey in keys)
                         {
                             if (counts.TryGetValue(subKey, out var secondValue))
                             {
-                                foreach (var values in groupOffer.Value)
-                                {
-                                    if()
-                                }
+                                var result = secondValue / qty;
                             }
                         }
                     }
@@ -140,5 +138,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
