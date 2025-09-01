@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows.Markup;
 using BeFaster.Runner.Exceptions;
 
 namespace BeFaster.App.Solutions.CHK
@@ -102,7 +103,13 @@ namespace BeFaster.App.Solutions.CHK
                     {
                         foreach (var subKey in keys)
                         {
-                            
+                            if (counts.TryGetValue(subKey, out var secondValue))
+                            {
+                                foreach (var values in groupOffer.Value)
+                                {
+                                    if()
+                                }
+                            }
                         }
                     }
                 }
@@ -133,4 +140,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
