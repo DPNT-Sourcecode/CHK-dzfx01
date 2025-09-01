@@ -36,6 +36,7 @@ namespace BeFaster.App.Solutions.CHK
                         counts[key]++;
                     }
                 }
+                if(counts.)
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -43,9 +44,13 @@ namespace BeFaster.App.Solutions.CHK
                     var count = entry.Value;
                     var price = info.GetValueOrDefault(item);
 
-                    if (offers.TryGetValue(item, out var discount))
+                    if (offers.TryGetValue(item, out var discounts))
                     {
-                        
+                        foreach (var offer in discounts)
+                        {
+                            total += count / offer[0] * offer[1];
+                            count %= offer[0];
+                        }
                     }
 
                     total += count * price;
@@ -59,10 +64,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
-
-
-
-
-
-
