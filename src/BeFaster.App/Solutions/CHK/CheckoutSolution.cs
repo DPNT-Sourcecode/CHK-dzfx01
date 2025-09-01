@@ -40,7 +40,6 @@ namespace BeFaster.App.Solutions.CHK
             info.TryGetValue('F', out var fValue);
             info.TryGetValue('U', out var uValue);
             var offers = new Dictionary<char, List<int[]>> {
-
                 { 'A', [ new int[] { 5, 200 }, new int[] { 3, 130 } ] },
                 { 'B', [ new int[] { 2, 45 } ] },
                 { 'F', [ new int[] { 3, fValue * 2 } ] },
@@ -57,7 +56,8 @@ namespace BeFaster.App.Solutions.CHK
                 { ('N', 3), 'M' },
                 { ('R', 3), 'Q' },
             };
-            
+            var 
+
 
             if (skus != null)
             {
@@ -75,19 +75,21 @@ namespace BeFaster.App.Solutions.CHK
                         counts[key]++;
                     }
                 }
-                foreach (var key in combinedOffers)
+                foreach (var combinedOffer in combinedOffers)
                 {
-                    if (counts.TryGetValue('E', out var eValue))
+                    var (key, value) = combinedOffer.Key;
+                    var keyOffer = combinedOffer.Value;
+                    if (counts.TryGetValue(key, out var firstValue))
                     {
-                        var result = eValue / 2;
+                        var result = firstValue / value;
 
-                        if (counts.TryGetValue('B', out var bValue))
+                        if (counts.TryGetValue(keyOffer, out var secondValue))
                         {
-                            counts['B'] = bValue - result;
+                            counts[keyOffer] = secondValue - result;
                         }
                     }
                 }
-                
+
                 var total = 0;
                 foreach (var entry in counts)
                 {
@@ -115,6 +117,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
