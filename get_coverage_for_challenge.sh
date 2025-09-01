@@ -8,31 +8,45 @@ set -o pipefail
 SCRIPT_CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 CHALLENGE_ID=$1
-JACOCO_TEST_REPORT_XML_FILE="${SCRIPT_CURRENT_DIR}/build/jacoco/test/jacocoTestReport.xml"
-mkdir -p ${SCRIPT_CURRENT_DIR}/target
-JAVA_CODE_COVERAGE_INFO="${SCRIPT_CURRENT_DIR}/coverage.tdl"
+CODE_COVERAGE_OUTPUT_FILE="${SCRIPT_CURRENT_DIR}/coverage.tdl"
 
-export JAVA_OPTS=${JAVA_OPTS:-""}
-export GRADLE_OPTS=${GRADLE_OPTS:-""}
+dotnet build ${SCRIPT_CURRENT_DIR} || true 1>&2
 
-( . ${SCRIPT_CURRENT_DIR}/gradlew -p ${SCRIPT_CURRENT_DIR} -q clean test jacocoTestReport --console=plain 1>&2 )
+coverlet_settings_file=$(mktemp)
+cat << EOF > ${coverlet_settings_file}
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>
+          <Include>[*]BeFaster.App.Solutions.${CHALLENGE_ID}.*</Include>
+          <SingleHit>true</SingleHit>
+          <SkipAutoProps>true</SkipAutoProps>
+          <DeterministicReport>false</DeterministicReport>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
+EOF
 
-[ -e ${JAVA_CODE_COVERAGE_INFO} ] && rm ${JAVA_CODE_COVERAGE_INFO}
+dotnet test --collect:"XPlat Code Coverage" --settings ${coverlet_settings_file} ${SCRIPT_CURRENT_DIR} || true 1>&2
+last_test_run_id=$(ls -rt1 ${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/TestResults/  | tail -n 1)
 
-if [ -f "${JACOCO_TEST_REPORT_XML_FILE}" ]; then
-    PERCENTAGE=$(( 0 ))
-    echo ${PERCENTAGE} > ${JAVA_CODE_COVERAGE_INFO}
-    COVERAGE_OUTPUT=$(xmllint --xpath '//package[@name="io/accelerate/solutions/'${CHALLENGE_ID}'"]/counter[@type="INSTRUCTION"]' ${JACOCO_TEST_REPORT_XML_FILE})
-    if [[ ! -z "${COVERAGE_OUTPUT}" ]]; then
-        MISSED=$(echo ${COVERAGE_OUTPUT} | awk '{print missed, $3}' | tr '="' ' ' | awk '{print $2}')
-        COVERED=$(echo ${COVERAGE_OUTPUT} | awk '{print missed, $4}' | tr '="' ' '| awk '{print $2}')
-        TOTAL_LINES=$((MISSED + $COVERED))
-        PERCENTAGE=$(($COVERED * 100 / $TOTAL_LINES))
-    fi
-    echo ${PERCENTAGE} > ${JAVA_CODE_COVERAGE_INFO}
-    cat ${JAVA_CODE_COVERAGE_INFO}
-    exit 0
-else
-    echo "No coverage report was found"
-    exit 255
+# Make sense of the coverage report
+coverage_report_file=${SCRIPT_CURRENT_DIR}/src/BeFaster.App.Tests/TestResults/${last_test_run_id}/coverage.cobertura.xml
+
+## Special case to remove empty reports
+lines_covered=$(xmllint ${coverage_report_file}  --xpath 'string(/coverage/@lines-covered)')
+echo "lines_covered=${lines_covered}"
+lines_valid=$(xmllint ${coverage_report_file}  --xpath 'string(/coverage/@lines-valid)')
+echo "lines_valid=${lines_valid}"
+
+if [ "${lines_valid}" -gt "0" ]; then
+  printf "%.0f\n" $(echo "($lines_covered/$lines_valid)*100" | bc -l)   > ${CODE_COVERAGE_OUTPUT_FILE}
 fi
+
+cat ${CODE_COVERAGE_OUTPUT_FILE}
+exit 0

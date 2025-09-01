@@ -1,7 +1,7 @@
 # How to update and release new client library
 
-Change library version is:
-- `build.gradle`
+Change library version in:
+- src/BeFaster.Runner/BeFaster.Runner.csproj
 
 Runner version = Client version + Runner patch
 Example:
@@ -13,7 +13,6 @@ runner version = 0.24.0.0
 
 Update the runner version (0.X.Y.Z) in:
 - `version.txt`
-
 
 ## To release
 
