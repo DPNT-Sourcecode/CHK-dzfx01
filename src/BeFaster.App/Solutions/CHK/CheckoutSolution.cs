@@ -17,12 +17,13 @@ namespace BeFaster.App.Solutions.CHK
 
             var offers = new Dictionary<char, List<int[]>> {
 
-                { 'A', new List<int>{ new int[] { 3, 120 }, new int[] { 5, 200 } } },
-                { 'B', 30 },
+                { 'A', [ new int[] { 3, 120 }, new int[] { 5, 200 } ] },
+                { 'B', [ new int[] { 2, 45 } ] },
             };
             
         }
     }
 }
+
 
 
