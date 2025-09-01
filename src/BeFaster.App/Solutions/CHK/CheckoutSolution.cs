@@ -106,7 +106,7 @@ namespace BeFaster.App.Solutions.CHK
                         {
                             if (counts.TryGetValue(subKey, out var secondValue))
                             {
-                                counts[subKey] -=  qty  qty;
+                                counts[subKey] -=  qty * secondValue;
                             }
                         }
                     }
@@ -138,6 +138,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
