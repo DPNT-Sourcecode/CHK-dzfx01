@@ -24,10 +24,17 @@ namespace BeFaster.App.Solutions.CHK
             if (skus != null)
             {
                 var count = new Dictionary<char, int>();
-                foreach (var value in skus.ToCharArray())
+                foreach (var key in skus.ToCharArray())
                 {
-                    var item = count.GetValueOrDefault(value);
-                    if (count.GetValueOrDefault())
+                    var item = count.GetValueOrDefault(key);
+                    if (item == 0)
+                    {
+                        count.Add(key, 1);
+                    }
+                    else
+                    {
+                        count[key]++;
+                    }
                 }
                 }
             else
@@ -37,6 +44,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
