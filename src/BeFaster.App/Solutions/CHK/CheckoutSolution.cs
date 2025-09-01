@@ -12,13 +12,15 @@ namespace BeFaster.App.Solutions.CHK
                 { 'B', 30 },
                 { 'C', 20 },
                 { 'D', 15 },
-                { 'E', 40 }
+                { 'E', 40 },
+                { 'F', 10 }
             };
 
             var offers = new Dictionary<char, List<int[]>> {
 
                 { 'A', [ new int[] { 5, 200 }, new int[] { 3, 130 } ] },
                 { 'B', [ new int[] { 2, 45 } ] },
+                { 'F', [ new int[] { 3, info.GetValueOrDefault } ] },
             };
 
             if (skus != null)
@@ -73,5 +75,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
