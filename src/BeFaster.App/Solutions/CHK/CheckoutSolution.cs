@@ -51,13 +51,9 @@ namespace BeFaster.App.Solutions.CHK
                 { 'U', [ new int[] { 4, uValue * 3 } ] },
                 { 'V', [ new int[] { 3, 130 }, new int[] { 2, 90 } ] }
             };
-            var combinedOffers = new Dictionary<char, Dictionary<char, int>>
+            var combinedOffers = new Dictionary<(char, int), char, int)>
             {
-                ['E'] = new Dictionary<char, int>
-                {
-                    ['B'] = 2
-                }
-                { 'E', new Dictionary<char, int> { 'B', 2 } }
+                { ('E', 2), ('B', 1) }
             };
             
 
@@ -131,5 +127,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
